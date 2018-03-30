@@ -8,6 +8,14 @@ public class CardTester {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		Card c1 = new Card("King", "Hearts", 13);
+		Card c2 = new Card("King", "Hearts", 13);
+		Card c3 = new Card("King", "Diamonds", 13);
+		Card[] ls = {c1,c2,c3};
+		System.out.println(c1.matches(c2));
+		System.out.println(c1.matches(c3));
+		for(Card c : ls){
+			System.out.println(c);
+		}
 	}
 }
