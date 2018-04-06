@@ -19,6 +19,7 @@ public class Deck {
 	 * The next card to be dealt is at size - 1.
 	 */
 	private int size;
+	private int startingSize;
 
 
 	/**
@@ -37,6 +38,7 @@ public class Deck {
 			}
 		}
 		size = cards.size();
+		startingSize = size;
 		shuffle();
 	}
 
@@ -63,6 +65,14 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		for(int k = size - 1; k >= 0; k--){
+			int index = (int)(Math.random() * ((size)));
+			Card first = cards.get(k);
+			Card second = cards.get(index);
+			cards.set(k, second);
+			cards.set(index, first);
+			}
+		size = startingSize;
 	}
 
 	/**

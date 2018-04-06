@@ -51,6 +51,19 @@ public class DeckTester {
 		System.out.println();
 		System.out.println();
 
+		String[] s = new String[]{"Diamonds", "Hearts","Clubs","Spades"};
+		String[] r = new String[]{"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
+		int[] v = new int[]{2,3,4,5,6,7,8,9,10,11,12,13, 11};
+
+		d = new Deck(r, s, v);
+
+		System.out.println("**** Original Deck Methods ****");
+		System.out.println("  toString:\n" + d.toString());
+		System.out.println("  isEmpty: " + d.isEmpty());
+		System.out.println("  size: " + d.size());
+		System.out.println();
+		System.out.println();
+
 		/* *** TO BE COMPLETED IN ACTIVITY 4 *** */
 	}
 }
