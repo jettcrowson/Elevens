@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -7,7 +8,7 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 5;
 
 
 	/**
@@ -19,7 +20,7 @@ public class Shuffler {
 								 " consecutive perfect shuffles:");
 		int[] values1 = {0, 1, 2, 3};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
-			perfectShuffle(values1);
+			values1 = perfectShuffle(values1);
 			System.out.print("  " + j + ":");
 			for (int k = 0; k < values1.length; k++) {
 				System.out.print(" " + values1[k]);
@@ -32,7 +33,7 @@ public class Shuffler {
 								 " consecutive efficient selection shuffles:");
 		int[] values2 = {0, 1, 2, 3};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
-			selectionShuffle(values2);
+			values2 = selectionShuffle(values2);
 			System.out.print("  " + j + ":");
 			for (int k = 0; k < values2.length; k++) {
 				System.out.print(" " + values2[k]);
@@ -40,6 +41,8 @@ public class Shuffler {
 			System.out.println();
 		}
 		System.out.println();
+		flip();
+		System.out.println(arePermutations(values1, values2));
 	}
 
 
@@ -49,8 +52,20 @@ public class Shuffler {
 	 * the cards in one half with the cards in the other.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void perfectShuffle(int[] values) {
+	public static int[] perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		int k = 0;
+		for(int i = 0; i < values.length/2; i++){
+			shuffled[k]=values[i];
+			k+=2;
+		}
+		k=1;
+		for(int i = values.length/2; i < values.length; i++){
+			shuffled[k]=values[i];
+			k+=2;
+		}
+		return shuffled;
 	}
 
 	/**
@@ -64,7 +79,38 @@ public class Shuffler {
 	 * searching for an as-yet-unselected card.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void selectionShuffle(int[] values) {
+	public static int[] selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+
+		for(int k = values.length - 1; k >= 0; k--){
+			int index = (int)(Math.random() * ((values.length)));
+			int first = values[k];
+			int second = values[index];
+			values[k] = second;
+			values[index]=  first;
+			}
+		return values;
+	}
+
+	public static boolean flip(){
+		int r = (int)(Math.random() * 3);
+		return r == 1 || r == 2;
+	}
+
+	public static boolean arePermutations(int[] a1, int[] a2){
+		boolean isPermutation = true;
+		for(int i : a1){
+			boolean matchFound = false;
+			for(int x : a2){
+				if(i == x){
+					matchFound = true;
+				}
+			}
+			if(matchFound == false){
+				isPermutation = false;
+			}
+		}
+		return isPermutation;
 	}
 }
