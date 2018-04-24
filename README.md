@@ -39,3 +39,4 @@ To move to the next activity, show your completed solution to your instructor. H
 $ git fetch upstream four_score-a4
 $ git checkout -b a4 upstream/four_score-a4
 ```
+
